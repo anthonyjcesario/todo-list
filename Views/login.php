@@ -15,6 +15,15 @@
         </form>
 
         <?php
+            if (isset($_POST['login'])) {
+                $usr = $_POST['usr'];
+                $pwd = $_POST['pwd'];
+
+                $usrHash = hash('sha256', $usr);
+                $pwdHash = hash('sha256', $pwd);
+
+                Login::getUser($usrHash, $pwdHash);
+            }
         /*
             if (isset($_POST['login'])) {
                 $usr = $_POST['usr'];

@@ -14,6 +14,4 @@ function autoload($className) {
     }
 }
 
-echo($_GET['url']);
-
 require_once('./routes.php');
