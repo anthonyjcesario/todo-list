@@ -10,7 +10,7 @@ session_start();
     <title>List</title>
 </head>
 <body>
-<form action="./list" method='post' class='p-3 m-2'>
+<form action="./list-items" method='post' class='p-3 m-2'>
             <h2>Todo List</h2><br>
             <input type="text" name='todoName' placeholder="Item Name" class='form-control w-50'><br>
             <label>Priority: </label>
@@ -26,6 +26,18 @@ session_start();
         </form>
 
         <?php
+            if (isset($_POST['submit'])) {
+                $todo_name = $_POST['todoName'];
+                $todo_priority = $_POST['priority'];
+                $todo_due_date = $_POST['dueDate'];
+                
+                if (!empty($todo_name)) {
+                    ListItems::setItem($todo_name, $todo_priority, $todo_due_date);
+                }
+
+
+
+            }
             /*
             if (isset($_POST['submit'])) {
                 if (!empty($_POST['todoName'])) {

@@ -24,8 +24,8 @@ session_start();
 
                 $usrHash = hash('sha256', $usr);
                 $pwdHash = hash('sha256', $pwd);
-
-                Login::getUser($usrHash, $pwdHash);
+                
+                Login::getUser($usr, $usrHash, $pwdHash);
             }
         /*
             if (isset($_POST['login'])) {
