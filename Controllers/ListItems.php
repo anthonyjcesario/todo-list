@@ -26,14 +26,20 @@ class ListItems extends Controller {
         $sql = "SELECT * FROM todos";
         $stmt = self::connect()->query($sql);
         while ($row = $stmt->fetch()) {
-            echo("<tr>");
-            echo("<td>". $row['todo_name'] . '</td>');
-            echo("<td>". $row['todo_priority'] . '</td>');
-            echo("<td>". $row['todo_due_date'] . '</td>');
-            echo("<form action='./list' method='post'>");
-            echo("<td><button type='submit' name='del' class='btn btn-danger'>Delete</button></td>");
-            echo("</form>");
-            echo("</tr>"); 
+            $username = hash('sha256', $_SESSION['username']);
+            $user_id = self::getUserID($username);
+
+            if ($row['user_id'] == $user_id) {
+                echo("<tr>");
+                echo("<td>". $row['todo_name'] . '</td>');
+                echo("<td>". $row['todo_priority'] . '</td>');
+                echo("<td>". $row['todo_due_date'] . '</td>');
+                echo("<form action='./list' method='post'>");
+                echo("<td><button type='submit' name='del' class='btn btn-danger'>Delete</button></td>");
+                echo("</form>");
+                echo("</tr>"); 
+            }
+            
         }
     }
 
