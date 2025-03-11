@@ -13,13 +13,3 @@ function autoload($className) {
         require("./Classes/$className.php");
     }
 }
-
-require_once('./routes.php');
-
-$uri = $_GET['url'];
-
-switch ($uri) {
-    default:
-        require_once("./Views/login.php");
-        break;
-}
