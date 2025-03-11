@@ -6,7 +6,7 @@
     <title>Register</title>
 </head>
 <body>
-<form action="./register.php" method='POST' class='p-3 m-2'>
+<form action="./register" method='POST' class='p-3 m-2'>
             <h2>Register</h2><br>
             <input type="text" name='fn' placeholder='First Name' class='form-control w-50'><br>
             <input type="text" name='usr' placeholder="Username" class='form-control w-50'><br>
@@ -17,6 +17,16 @@
         </form>
         
         <?php
+            if (isset($_POST['register'])) {
+                $usr = $_POST['usr'];
+                $pwd = $_POST['pwd'];
+                $vPwd = $_POST['vPwd'];
+    
+                $usrHash = hash('sha256', $usr);
+                $pwdHash = hash('sha256', $pwd);
+
+                Register::setUser($usrHash, $pwdHash);
+            }
         /*
         if (isset($_POST['register'])) {
             $fn = $_POST['fn'];
