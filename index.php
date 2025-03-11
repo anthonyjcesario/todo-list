@@ -3,7 +3,7 @@ session_start();
 
 define('DB_HOST', 'localhost');
 define("DB_USER", "administrator");
-define("DB_PASSWORD", "Bobbyboy@321");
+define("DB_PASSWORD", "");
 define("DB_NAME","todolist");
 
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
