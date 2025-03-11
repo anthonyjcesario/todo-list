@@ -54,13 +54,26 @@ class ListItems extends Controller {
                 echo("<td>". $row['todo_priority'] . '</td>');
                 echo("<td>". $row['todo_due_date'] . '</td>');
                 echo("<form action='./list-items' method='post'>");
-                echo("<td><button type='submit' name='del' class='btn btn-danger'>Delete</button></td>");
+                echo("<td><button type='submit' name='".$row['todo_id']."' class='btn btn-danger'>Delete</button></td>");
                 echo("</form>");
                 echo("</tr>"); 
 
             }
+
+            if (isset($_POST[$row['todo_id']])) {
+                $id = $row['todo_id'];
+                $sql = "DELETE FROM todos where todo_id=$id";
+                $stmt = self::connect()->prepare($sql);
+                $stmt->execute();
+                header("Location: ./list-items");
+            }
+            
             
         }
+    }
+
+    public static function delItem() {
+        
     }
 
 

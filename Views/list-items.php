@@ -32,7 +32,7 @@ if ($_SESSION['logged in'] == false) {
         </form>
 
         <?php
-
+            ListItems::delItem();
             if (isset($_POST['submit'])) {
                 $todo_name = $_POST['todoName'];
                 $todo_priority = $_POST['priority'];
@@ -53,9 +53,11 @@ if ($_SESSION['logged in'] == false) {
                 <th>Item Due Date</th>
                 <th></th>
             </tr>
+
             <?php
                 ListItems::getItems();
             ?>
+
         </table>
 
         <form action="./list-items" method='POST' class='p-3 m-2'>

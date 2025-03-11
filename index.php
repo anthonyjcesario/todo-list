@@ -13,3 +13,5 @@ function autoload($className) {
         require("./Classes/$className.php");
     }
 }
+
+require_once('routes.php');
