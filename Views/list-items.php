@@ -62,6 +62,7 @@
                 <th></th>
             </tr>
             <?php
+                ListItems::getItems();
             /*
                 $usrHash = hash("sha256", $_SESSION['username']);
                 $query = "SELECT * FROM users WHERE username='$usrHash'";
