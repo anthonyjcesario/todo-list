@@ -8,6 +8,7 @@ class ListItems extends Controller {
         $stmt = self::connect()->prepare($sql);
         $stmt->execute(array($username));
         $names = $stmt->fetchAll();
+        
         foreach ($names as $name) {
             return ($name['user_id']);
         }
@@ -33,30 +34,30 @@ class ListItems extends Controller {
         } else {
             echo("This task already exists!");
         }
-
-
-        #Add to the list
         
-
     }
 
     public static function getItems() {
 
         $sql = "SELECT * FROM todos";
         $stmt = self::connect()->query($sql);
+        
         while ($row = $stmt->fetch()) {
+            
             $username = hash('sha256', $_SESSION['username']);
             $user_id = self::getUserID($username);
 
             if ($row['user_id'] == $user_id) {
+                
                 echo("<tr>");
                 echo("<td>". $row['todo_name'] . '</td>');
                 echo("<td>". $row['todo_priority'] . '</td>');
                 echo("<td>". $row['todo_due_date'] . '</td>');
-                echo("<form action='./list' method='post'>");
+                echo("<form action='./list-items' method='post'>");
                 echo("<td><button type='submit' name='del' class='btn btn-danger'>Delete</button></td>");
                 echo("</form>");
                 echo("</tr>"); 
+
             }
             
         }
@@ -64,8 +65,10 @@ class ListItems extends Controller {
 
 
     public static function logout() {
+        
         session_unset();
         session_destroy();
+        
         header("Location: ./login");
     }
 

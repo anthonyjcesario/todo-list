@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+if ($_SESSION['logged in'] == false) {
+    header("Location: ./login");
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,8 +41,6 @@ session_start();
                 if (!empty($todo_name)) {
                     ListItems::setItem($todo_name, $todo_priority, $todo_due_date);
                 }
-
-
 
             }
 
