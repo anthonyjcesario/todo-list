@@ -1,28 +1,47 @@
 <?php
 
 class ListItems extends Controller {
+    
     private static function getUserID($username) {
-        $sql = "SELECT * FROM users WHERE username= ? ";
+
+        $sql = "SELECT * FROM users WHERE username = ? ";
         $stmt = self::connect()->prepare($sql);
         $stmt->execute(array($username));
         $names = $stmt->fetchAll();
         foreach ($names as $name) {
             return ($name['user_id']);
         }
+
     }
     
     public static function setItem($todo_name, $todo_priority, $todo_due_date) {
+
         $username = hash('sha256', $_SESSION['username']);
         $user_id = self::getUserID($username);
 
-        $sql = "INSERT INTO todos (todo_name, todo_priority, todo_due_date, user_id) VALUES (?, ?, ?, ?)";
+        #Check to see if this entry already exists in the list
+
+        $sql = "SELECT * FROM todos WHERE todo_name = ? AND user_id = ?";
         $stmt = self::connect()->prepare($sql);
-        $stmt->execute(array($todo_name, $todo_priority, $todo_due_date, $user_id));
+        $stmt->execute(array($todo_name, $user_id));
+        $numRows = $stmt->fetchColumn();
+
+        if ($numRows == 0) {
+            $sql = "INSERT INTO todos (todo_name, todo_priority, todo_due_date, user_id) VALUES (?, ?, ?, ?)";
+            $stmt = self::connect()->prepare($sql);
+            $stmt->execute(array($todo_name, $todo_priority, $todo_due_date, $user_id));
+        } else {
+            echo("This task already exists!");
+        }
+
+
+        #Add to the list
+        
 
     }
 
     public static function getItems() {
-        #Need to add user ID into this.
+
         $sql = "SELECT * FROM todos";
         $stmt = self::connect()->query($sql);
         while ($row = $stmt->fetch()) {
