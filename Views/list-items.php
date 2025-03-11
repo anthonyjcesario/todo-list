@@ -8,6 +8,8 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 </head>
 <body>
 <form action="./list-items" method='post' class='p-3 m-2'>
@@ -26,6 +28,7 @@ session_start();
         </form>
 
         <?php
+
             if (isset($_POST['submit'])) {
                 $todo_name = $_POST['todoName'];
                 $todo_priority = $_POST['priority'];
@@ -38,38 +41,9 @@ session_start();
 
 
             }
-            /*
-            if (isset($_POST['submit'])) {
-                if (!empty($_POST['todoName'])) {
-                    $usrHash = hash("sha256", $_SESSION['username']);
-                    $query = "SELECT * FROM users WHERE username='$usrHash'";
-                    $result = mysqli_query($conn, $query);
-                    $row = mysqli_fetch_assoc($result);
-
-                    $userId = $row['user_id'];
-                    $todoName = $_POST['todoName'];
-                    if ($_POST['priority'] == "P1") {
-                        $priority = 1;
-                    } else if ($_POST['priority'] == "P2") {
-                        $priority = 2;
-                    } else if ($_POST['priority'] == "P3") {
-                        $priority = 3;
-                    } else if ($_POST['priority'] == "P4") {
-                        $priority = 4;
-                    }
-
-                    $date = $_POST['dueDate'];
-
-                    $query = "INSERT INTO todos (todo_name, todo_priority, todo_due_date, user_id) VALUES ('$todoName', '$priority', '$date', '$userId')";
-                    $result = mysqli_query($conn, $query);
-                } else {
-                    echo("There's no name for your todo item!");
-                }
-            } 
-        
-                
-                */
+            
         ?>
+
         <table class='p-3 m-4 table table-striped w-50 table-dark'>
             <tr>
                 <th>Item Name</th>
@@ -79,39 +53,10 @@ session_start();
             </tr>
             <?php
                 ListItems::getItems();
-            /*
-                $usrHash = hash("sha256", $_SESSION['username']);
-                $query = "SELECT * FROM users WHERE username='$usrHash'";
-                $result = mysqli_query($conn, $query);
-                $row = mysqli_fetch_assoc($result);
-                $userId = $row['user_id'];
-
-                $query = "SELECT * FROM todos WHERE user_id='$userId'";
-                $result = mysqli_query($conn, $query);
-                $numRows = mysqli_num_rows($result);
-                $row = mysqli_fetch_assoc($result);
-
-                if ($numRows > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo("<tr>");
-                        echo("<td>". $row['todo_name'] . '</td>');
-                        echo("<td>". $priority . '</td>');
-                        echo("<td>". $row['todo_due_date'] . '</td>');
-                        echo("<form action='./list' method='post'>");
-                        echo("<td><button type='submit' name='del' class='btn btn-danger'>Delete</button></td>");
-                        echo("</form>");
-                        echo("</tr>"); 
-                    }
-                }
-
-                if (isset($_POST['del'])) {
-                    $query = "DELETE * FROM todos WHERE todo_name =" . $row['todo_name'];
-                };
-                */
             ?>
         </table>
 
-        <form action="./login" method='POST' class='p-3 m-2'>
+        <form action="./" method='POST' class='p-3 m-2'>
             <br><button type='submit' class='btn btn-danger'>Logout</button>
         </form>
 </body>
