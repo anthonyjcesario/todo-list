@@ -196,7 +196,7 @@ switch ($fullURI) {
                         echo("<form action='./list' method='post'>");
                         echo("<td><button type='submit' name='del' class='btn btn-danger'>Delete</button></td>");
                         echo("</form>");
-                        echo("</tr>");
+                        echo("</tr>"); 
                     }
                 }
 
