@@ -41,10 +41,10 @@ session_start();
 
 
             }
-            
+
         ?>
 
-        <table class='p-3 m-4 table table-striped w-50 table-dark'>
+        <table class='p-3 m-4 table table-striped w-75 table-dark'>
             <tr>
                 <th>Item Name</th>
                 <th>Item Priority</th>
@@ -56,8 +56,14 @@ session_start();
             ?>
         </table>
 
-        <form action="./" method='POST' class='p-3 m-2'>
-            <br><button type='submit' class='btn btn-danger'>Logout</button>
+        <form action="./list-items" method='POST' class='p-3 m-2'>
+            <br><button type='submit' name='logout' class='btn btn-danger'>Logout</button>
         </form>
+
+        <?php
+            if (isset($_POST['logout'])) {
+                ListItems::logout();
+            }
+        ?>
 </body>
 </html>

@@ -29,27 +29,7 @@ session_start();
                 
                 Login::getUser($usr, $usrHash, $pwdHash);
             }
-        /*
-            if (isset($_POST['login'])) {
-                $usr = $_POST['usr'];
-                $pwd = $_POST['pwd'];
-
-                $usrHash = hash('sha256', $usr);
-                $pwdHash = hash('sha256', $pwd);
-
-                $query = "SELECT * FROM users WHERE username='$usrHash' AND pwd='$pwdHash'";
-                $result = mysqli_query($conn, $query);
-                $rowNum = mysqli_num_rows($result);
-
-                if ($rowNum > 0) {
-                    $_SESSION['logged in'] = true;
-                    $_SESSION['username'] = $usr;
-                    header("Location: ./list");
-                } else {
-                    echo ("Username/Password Incorrect.");
-                }
-            }
-                */
         ?>
+        
 </body>
 </html>
