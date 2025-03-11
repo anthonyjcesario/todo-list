@@ -3,7 +3,7 @@ session_start();
 
 define('DB_HOST', 'localhost');
 define("DB_USER", "administrator");
-define("DB_PASSWORD", "");
+define("DB_PASSWORD", "Bobbyboy@321");
 define("DB_NAME","todolist");
 
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -191,7 +191,7 @@ switch ($fullURI) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo("<tr>");
                         echo("<td>". $row['todo_name'] . '</td>');
-                        echo("<td>". $row['todo_priority'] . '</td>');
+                        echo("<td>". $priority . '</td>');
                         echo("<td>". $row['todo_due_date'] . '</td>');
                         echo("<form action='./list' method='post'>");
                         echo("<td><button type='submit' name='del' class='btn btn-danger'>Delete</button></td>");
