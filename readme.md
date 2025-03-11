@@ -13,7 +13,7 @@ This isn't really meant to be used or messed with by people who aren't looking t
 
 If you want to contribute, there are a couple of things that you need to do.
 
-In the db folder, there is a .sql file. You can load this into whatever sql thingy that you use. Then, fire up the index.php file and at the top, you will find the following variables:
+In the db folder, there is a .sql file. You can load this into whatever sql thingy that you use. Then, open up the Database.php class in the Classes folder and fill out the following variables:
 
 $DB_HOST
 $DB_USER
