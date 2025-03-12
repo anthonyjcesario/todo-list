@@ -30,12 +30,13 @@ session_start();
                 $usr = $_POST['usr'];
                 $pwd = $_POST['pwd'];
                 $verifyPwd = $_POST['vPwd'];
+                $defaultTeam = "1";
     
                 $pwdHash = hash('sha256', $pwd);
                 $verifyPwdHash = hash('sha256', $pwd);
 
 
-                Register::setUser($fn, $ln, $usr, $pwdHash);
+                Register::setUser($fn, $ln, $usr, $pwdHash, $defaultTeam);
             }
             
         ?>
