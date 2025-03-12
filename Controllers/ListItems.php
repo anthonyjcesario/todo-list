@@ -85,4 +85,8 @@ class ListItems extends Controller {
         header("Location: ./login");
     }
 
+    public static function createTeamPage() {
+        header("Location: ./create-team");
+    }
+
 }

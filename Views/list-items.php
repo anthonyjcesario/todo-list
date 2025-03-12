@@ -33,6 +33,7 @@ if ($_SESSION['logged in'] == false) {
 
         <?php
             ListItems::delItem();
+
             if (isset($_POST['submit'])) {
                 $todo_name = $_POST['todoName'];
                 $todo_priority = $_POST['priority'];
@@ -40,6 +41,8 @@ if ($_SESSION['logged in'] == false) {
                 
                 if (!empty($todo_name)) {
                     ListItems::setItem($todo_name, $todo_priority, $todo_due_date);
+                } else {
+                    echo("Your todo needs a name!");
                 }
 
             }
@@ -70,6 +73,14 @@ if ($_SESSION['logged in'] == false) {
             }
         ?>
 
-        <a href='./create-team'>Create Team</a>
+        <form action="./list-items" method='post' class='p-3 m-2'>
+            <button class="btn btn-primary" name='teamPage'>Create Team</button>
+        </form>
+
+        <?php
+            if (isset($_POST['teamPage'])) {
+                ListItems::createTeamPage();
+            }
+        ?>
 </body>
 </html>
