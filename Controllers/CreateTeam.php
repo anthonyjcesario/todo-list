@@ -18,34 +18,6 @@ class CreateTeam extends Controller{
         }
     }
 
-    public static function leaveTeam() {
-        #Grab the user's team ID
-        $sql = "SELECT * FROM users WHERE username='". $_SESSION['username'] ."'";
-        $stmt = self::connect()->query($sql);
-        $row = $stmt->fetch();
-
-        $userTeamID = $row['team_id'];
-
-        #Find the team with that ID
-        $sql = "SELECT * FROM teams WHERE team_id='". $userTeamID ."'";
-        $stmt = self::connect()->query($sql);
-        $row = $stmt->fetch();
-        
-        if ($row['team_id'] == $userTeamID) {
-            echo("<div class='row p-3 m-1 border border-secondary rounded '>");
-            echo("<div class='col-8'>");
-            echo("<h5>" . $row['team_name'] . "</h5>");
-            echo("</div>");
-            echo("<div class='col'>");
-            echo("<button type='submit' name='" . $row['team_id'] . "' class='btn btn-success'>Join Team</button></h4>");
-            echo("</div>");
-            echo("<div class='col'>");
-            echo("<button type='submit' name='" . $row['team_id'] . "' class='btn btn-danger'>Leave Team</button></h4>");
-            echo("</div>");
-            echo("</div>");
-        }
-    }
-
     public static function getTeams() {
         #Grab the user's team ID
         $sql = "SELECT * FROM users WHERE username='". $_SESSION['username'] ."'";
@@ -75,9 +47,6 @@ class CreateTeam extends Controller{
                 echo("<div class='row p-3 m-1 border border-secondary rounded w-75'>");
                 echo("<div class='col-8'>");
                 echo("<h5>" . $row['team_name'] . "</h5>");
-                echo("</div>");
-                echo("<div class='col'>");
-                echo("<button type='submit' name='" . $row['team_id'] . "' class='btn btn-success'>Join Team</button></h4>");
                 echo("</div>");
                 echo("<div class='col'>");
                 echo("<button type='submit' name='" . $row['team_id'] . "' class='btn btn-danger'>Leave Team</button></h4>");
