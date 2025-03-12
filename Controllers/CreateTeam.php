@@ -8,7 +8,6 @@ class CreateTeam extends Controller{
         $sql = "SELECT COUNT(*) FROM teams WHERE team_name = ?";
         $stmt = self::connect()->prepare($sql);
         $stmt->execute(array($teamName));
-        
         $rowNum = $stmt->fetchColumn();
         
         if ($rowNum == 0) {
@@ -23,12 +22,10 @@ class CreateTeam extends Controller{
         $sql = "SELECT * FROM users WHERE username='". $_SESSION['username'] ."'";
         $stmt = self::connect()->query($sql);
         $row = $stmt->fetch();
-
         $userTeamID = $row['team_id'];
-        
-
         $sql = "SELECT * FROM teams";
         $stmt = self::connect()->query($sql);
+        
         echo("<h1 class='m-5'>Team List:</h1>");
         
         while($row = $stmt->fetch()) {
@@ -54,8 +51,8 @@ class CreateTeam extends Controller{
                 echo("</div>");
                 
             }
-
             echo("</form>");
+            
             if (isset($_POST[$row['team_id']])) {
                 $id = $row['team_id'];
                 $sql = "UPDATE users SET team_id = $id WHERE username = '" . $_SESSION['username'] . "'";

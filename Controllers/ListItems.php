@@ -72,6 +72,20 @@ class ListItems extends Controller {
         //Code goes
     }
 
+    public static function viewTeam() {
+        $sql = "SELECT * FROM users WHERE username = '" . $_SESSION['username'] . "'";
+        $stmt = self::connect()->query($sql);
+        $row = $stmt->fetch();
+
+        if ($row['team_id'] > 1) {
+            echo("<div class='col text-start'>");
+            echo("<form action='' method='post>'");
+            echo("<button class='btn btn-secondary' name='teamPage'>View Team</button>");
+            echo("</form>");
+            echo("</div>");
+        }
+    }
+
     public static function logout() {
         
         session_unset();

@@ -57,21 +57,32 @@ if ($_SESSION['logged in'] == false) {
                 ListItems::getItems();
             ?>
         </table>
+        
+        
+        
 
-        <form action="./list-items" method='POST' class='p-3 m-2'>
-            <br><button type='submit' name='logout' class='btn btn-danger'>Logout</button>
-        </form>
-        <?php
-            if (isset($_POST['logout'])) {
-                ListItems::logout();
-            }
-        ?>
-        <form action="./list-items" method='post' class='p-3 m-2'>
-            <button class="btn btn-primary" name='teamPage'>Create Team</button>
-        </form>
+        <div class="row m-3">
+            <div class="col text-start">
+                <form action="./list-items" method='POST'>
+                    <button type='submit' name='logout' class='btn btn-danger'>Logout</button>
+                </form>
+            </div>
+            <div class="col text-start">
+                <form action="./list-items" method='post'>
+                    <button class='btn btn-primary' name='teamPage'>Create Team</button>
+                </form>
+            </div>
+            <?php
+                ListItems::viewTeam();
+            ?>
+        </div>
+
         <?php
             if (isset($_POST['teamPage'])) {
                 ListItems::createTeamPage();
+            }
+            if (isset($_POST['logout'])) {
+                ListItems::logout();
             }
         ?>
 </body>
