@@ -24,10 +24,11 @@ session_start();
                 $usr = $_POST['usr'];
                 $pwd = $_POST['pwd'];
 
-                $usrHash = hash('sha256', $usr);
                 $pwdHash = hash('sha256', $pwd);
+
                 
-                Login::getUser($usr, $usrHash, $pwdHash);
+                
+                Login::getUser($usr, $pwdHash);
             }
         ?>
         

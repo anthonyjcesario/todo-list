@@ -10,3 +10,7 @@ Route::setRoutes("register", function() {
 Route::setRoutes("list-items", function() {
     ListItems::view("list-items");
 });
+
+Route::setRoutes("create-team", function() {
+    CreateTeam::view("create-team");
+});

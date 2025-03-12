@@ -1,10 +1,10 @@
 <?php
 
 class Login extends Controller {
-    public static function getUser($username, $usernameHash, $pwd) {
+    public static function getUser($username, $pwd) {
         $sql = "SELECT COUNT(*) FROM users where username = ? AND pwd = ?";
         $stmt = self::connect()->prepare($sql);
-        $stmt->execute([$usernameHash, $pwd]);
+        $stmt->execute([$username, $pwd]);
 
         $numRows = $stmt->fetchColumn();
         if ($numRows > 0) {

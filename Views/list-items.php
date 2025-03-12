@@ -69,5 +69,7 @@ if ($_SESSION['logged in'] == false) {
                 ListItems::logout();
             }
         ?>
+
+        <a href='./create-team'>Create Team</a>
 </body>
 </html>
