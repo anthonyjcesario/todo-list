@@ -72,10 +72,6 @@ class ListItems extends Controller {
         }
     }
 
-    public static function delItem() {
-        
-    }
-
 
     public static function logout() {
         

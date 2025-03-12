@@ -32,7 +32,7 @@ session_start();
 
     <a href='./list-items'>Back</a>
 
-    <h1>Team List:</h1>
+    
     <?php
         CreateTeam::getTeams();
     ?>

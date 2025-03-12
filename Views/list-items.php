@@ -16,8 +16,9 @@ if ($_SESSION['logged in'] == false) {
 
 </head>
 <body>
-<form action="./list-items" method='post' class='p-3 m-2'>
-            <h2>Todo List</h2><br>
+<h2 class='bg-dark text-light p-3'>Todo List</h2><br>
+<form action="./list-items" method='post' class='p-3 m-2 mt-1 border rounded w-75'>
+            <h4>Welcome, <?php echo $_SESSION['firstname'] ?>!</h4><br>
             <input type="text" name='todoName' placeholder="Item Name" class='form-control w-50'><br>
             <label>Priority: </label>
             <select name='priority' class='form-control w-50'>
@@ -32,7 +33,6 @@ if ($_SESSION['logged in'] == false) {
         </form>
 
         <?php
-            ListItems::delItem();
 
             if (isset($_POST['submit'])) {
                 $todo_name = $_POST['todoName'];
