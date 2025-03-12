@@ -7,8 +7,10 @@ class CreateTeam extends Controller{
         $stmt->execute();
 
         while ($row = $stmt->fetch()) {
-
-            echo("<br><h5><input type='checkbox'> " . $row['fn'] . " " . $row['ln'] . " (". $row['username'] . ")</h5>");
+            if ($row['username'] != $_SESSION['username']) {
+                echo("<br><h5><input type='checkbox'> " . $row['fn'] . " " . $row['ln'] . " (". $row['username'] . ")</h5>");
+            }
+            
 
             
         }
