@@ -15,4 +15,10 @@ class CreateTeam extends Controller{
             
         }
     }
+
+    public static function setTeam($teamName) {
+        $sql = "INSERT INTO teams (team_name) VALUES (?)";
+        $stmt = self::connect()->prepare($sql);
+        $stmt->execute(array($teamName));
+    }
 }

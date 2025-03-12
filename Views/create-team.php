@@ -18,9 +18,16 @@ session_start();
             CreateTeam::getUsers();
         ?>
 
-        <br><button type='submit' class='btn btn-primary'>Add to Team</button>
+        <br><button type='submit' name='newTeam' class='btn btn-primary'>Add to Team</button>
 
     </form>
+
+    <?php
+        if (isset($_POST['newTeam'])) {
+            $teamName = $_POST['teamName'];
+            CreateTeam::setTeam($teamName);
+        }
+    ?>
     
 
     <a href='./list-items'>Back</a>
