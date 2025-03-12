@@ -2,19 +2,6 @@
 
 class CreateTeam extends Controller{
 
-    public static function getUsers() {
-        $sql = "SELECT * FROM users";
-        $stmt = self::connect()->prepare($sql);
-        $stmt->execute();
-
-        while ($row = $stmt->fetch()) {
-            
-            if ($row['username'] != $_SESSION['username']) {
-                echo("<br><h5><input type='checkbox'> " . $row['fn'] . " " . $row['ln'] . " (". $row['username'] . ")</h5>");
-            }  
-        }
-    }
-
     public static function setTeam($teamName) {
 
         #Check if the team already exists
@@ -45,7 +32,7 @@ class CreateTeam extends Controller{
         $row = $stmt->fetch();
         
         if ($row['team_id'] == $userTeamID) {
-            echo("<div class='row p-3 m-1 border border-secondary rounded'>");
+            echo("<div class='row p-3 m-1 border border-secondary rounded '>");
             echo("<div class='col-8'>");
             echo("<h5>" . $row['team_name'] . "</h5>");
             echo("</div>");
@@ -76,7 +63,7 @@ class CreateTeam extends Controller{
             echo("<form action='', method='post' class='m-5'>");
             
             if ($row['team_id'] != "1" && $row['team_id'] != $userTeamID) { //If it's not the default team and/or the user is not apart of the team
-                echo("<div class='row p-3 m-1 border border-secondary rounded'>");
+                echo("<div class='row p-3 m-1 border border-secondary rounded w-75'>");
                 echo("<div class='col-8'>");
                 echo("<h5>" . $row['team_name'] . "</h5>");
                 echo("</div>");
@@ -85,7 +72,7 @@ class CreateTeam extends Controller{
                 echo("</div>");
                 echo("</div>");
             } else if ($row['team_id'] == $userTeamID) { //If the user is apart of the team.
-                echo("<div class='row p-3 m-1 border border-secondary rounded'>");
+                echo("<div class='row p-3 m-1 border border-secondary rounded w-75'>");
                 echo("<div class='col-8'>");
                 echo("<h5>" . $row['team_name'] . "</h5>");
                 echo("</div>");

@@ -11,29 +11,28 @@ session_start();
 
 </head>
 <body>
+    <h1 class="bg-dark text-light p-3">Teams</h1>
     <form action="" method='post' class='p-3 m-2'>
         <input type="text" name='teamName' placeholder='Team Name' class='form-control w-50'>
-        
-        <?php
-            CreateTeam::getUsers();
-        ?>
 
         <br><button type='submit' name='newTeam' class='btn btn-primary'>Add to Team</button>
 
     </form>
-
     <?php
         if (isset($_POST['newTeam'])) {
             $teamName = $_POST['teamName'];
             CreateTeam::setTeam($teamName);
         }
     ?>
-    
-
-    <a href='./list-items'>Back</a>
-
-    
+    <form action="" method='post'>
     <?php
+        echo("<button type='submit' name='back' class='btn btn-danger ms-4'>Back</button>");
+    ?>
+    </form>
+    <?php
+        if (isset($_POST['back'])) {
+            header("Location: ./list-items");
+        }
         CreateTeam::getTeams();
     ?>
 </body>

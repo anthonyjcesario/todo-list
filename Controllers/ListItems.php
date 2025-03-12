@@ -12,7 +12,6 @@ class ListItems extends Controller {
         foreach ($names as $name) {
             return ($name['user_id']);
         }
-
     }
     
     public static function setItem($todo_name, $todo_priority, $todo_due_date) {
@@ -33,8 +32,7 @@ class ListItems extends Controller {
             $stmt->execute(array($todo_name, $todo_priority, $todo_due_date, $user_id));
         } else {
             echo("This task already exists!");
-        }
-        
+        }   
     }
 
     public static function getItems() {
@@ -67,11 +65,12 @@ class ListItems extends Controller {
                 $stmt->execute();
                 header("Location: ./list-items");
             }
-            
-            
         }
     }
 
+    public static function setTeamItems() {
+        //Code goes
+    }
 
     public static function logout() {
         
@@ -84,5 +83,4 @@ class ListItems extends Controller {
     public static function createTeamPage() {
         header("Location: ./create-team");
     }
-
 }

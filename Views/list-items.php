@@ -44,11 +44,8 @@ if ($_SESSION['logged in'] == false) {
                 } else {
                     echo("Your todo needs a name!");
                 }
-
             }
-
         ?>
-
         <table class='p-3 m-4 table table-striped w-75 table-dark'>
             <tr>
                 <th>Item Name</th>
@@ -56,27 +53,22 @@ if ($_SESSION['logged in'] == false) {
                 <th>Item Due Date</th>
                 <th></th>
             </tr>
-
             <?php
                 ListItems::getItems();
             ?>
-
         </table>
 
         <form action="./list-items" method='POST' class='p-3 m-2'>
             <br><button type='submit' name='logout' class='btn btn-danger'>Logout</button>
         </form>
-
         <?php
             if (isset($_POST['logout'])) {
                 ListItems::logout();
             }
         ?>
-
         <form action="./list-items" method='post' class='p-3 m-2'>
             <button class="btn btn-primary" name='teamPage'>Create Team</button>
         </form>
-
         <?php
             if (isset($_POST['teamPage'])) {
                 ListItems::createTeamPage();
