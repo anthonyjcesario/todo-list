@@ -8,15 +8,15 @@ class Register extends Controller {
         $stmt->execute(array($usr));
         $rowNum = $stmt->fetchColumn();
 
-        if ($rowNum == 0) {
+            if ($rowNum == 0) {
 
-            $sql = "INSERT INTO users (fn, ln, username, pwd, team_id) VALUES (?, ?, ?, ?, ?)";
-            $stmt = self::connect()->prepare($sql);
-            $stmt->execute([$fn, $ln, $usr, $pwd, $teamID]);
-            echo("<h5 class='m-4'>User account created!</h5>");
-        } else {
-            echo("<h5 class='m-4'>This username is already in use!</h5>");
-        } 
+                $sql = "INSERT INTO users (fn, ln, username, pwd, team_id) VALUES (?, ?, ?, ?, ?)";
+                $stmt = self::connect()->prepare($sql);
+                $stmt->execute([$fn, $ln, $usr, $pwd, $teamID]);
+                echo("<h5 class='m-4'>User account created!</h5>");
+            } else {
+                echo("<h5 class='m-4'>This username is already in use!</h5>");
+            } 
     }
 
 }

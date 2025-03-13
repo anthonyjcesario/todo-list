@@ -14,3 +14,7 @@ Route::setRoutes("list-items", function() {
 Route::setRoutes("create-team", function() {
     CreateTeam::view("create-team");
 });
+
+Route::setRoutes("test", function() {
+    Test::view("test");
+});
